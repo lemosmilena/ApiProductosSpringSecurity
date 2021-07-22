@@ -24,7 +24,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                                  // se utiliza cuando se trabaja con Front, por eso no lo usamos para diseños de APIs por eso la desactivamos con disable
                 .authorizeRequests()
                 .antMatchers("/", "/index.html").permitAll()  // mapea determinadas url, se le pueden aplicar ciertas restricciones
-                                                                        // el "/" sirve para el localhost y se separa con coma las diferentes paginas, donde ingresan sin loguearse
+                // el "/" sirve para el localhost y se separa con coma las diferentes paginas, donde ingresan sin loguearse
+                .antMatchers("/productos/detalles").hasRole("ADMIN") // unicamente le permito al rol ADMIN entrar a este recurso
                 .anyRequest()
                 .authenticated()
                 .and()
